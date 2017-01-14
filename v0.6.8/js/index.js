@@ -115,7 +115,7 @@ var myITNURL = rootURL + APIPath + namespaceITN + myITNRoute;
     }
 
     //Only for testing 
-    window.isphone = false;
+    //window.isphone = false;
 
     if( window.isphone ) {
         document.addEventListener("deviceready", onDeviceReady, false);
