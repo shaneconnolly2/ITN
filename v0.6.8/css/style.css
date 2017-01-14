@@ -1,0 +1,398 @@
+
+ /********************** CATEGORY HEADINGS HOME PAGE **********************/
+.catHeading, .catHeadingNoClick {
+  clear: both;
+  margin: 0px;
+  padding: 30px 30px 0px 0px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: 300;
+}
+.catHeading:after, .catHeadingNoClick:after {
+    content:"";
+    display: inline-block;
+    height: 0.5em;
+    vertical-align: bottom;
+    width: 100%;
+    margin-right: -100%;
+    margin-left: 10px;
+    border-top: 4px solid black;
+}
+
+/**************************************************/
+
+/****************** SOCIAL MEDIA ICONS ************/
+.social-icons li {
+  margin: 0px !important;
+  padding: 0px !important;
+  background-image: none !important;
+  display: inline-block !important;
+  border-bottom: 0px none !important;
+  list-style-type: none !important;
+  -moz-user-select: none;
+}
+
+.social-icons li img {
+    width: 64px !important;
+    height: 64px !important;
+    margin-right: 8px !important;
+}
+/**************************************************/
+
+/********************** TILES **********************/
+body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleBox {
+   margin-bottom: 0;
+}
+
+.wrap {
+   overflow: hidden;
+   margin: 10px;
+}
+.box {
+   float: left;
+   position: relative;
+   width: 20%;
+   padding-bottom: 20%;
+}
+.boxInner {
+   position: absolute;
+   left: 10px;
+   right: 10px;
+   top: 10px;
+   bottom: 10px;
+   overflow: hidden;
+}
+
+.boxInner img {
+
+width: 100%;
+}
+
+.textOverlay p 
+{
+    font-family: "Open Sans";
+    font-style: normal;
+    font-size: 1.4em;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding:5px;
+    margin: 0;
+}
+
+.authorText
+{
+    font-size: 0.5em;
+}
+
+/* ----------- Media Queries for responsive Design ---------- */
+
+/* ----------- Phones ----------- */
+/* Small phone */
+@media only screen 
+  and (max-width : 480px) {
+   .box {
+    width: 100%;
+    padding-bottom: 100%;
+   }
+  #contentcolumn>.ui-block-a {
+    width:100% !important;
+  }
+  #contentcolumn>.ui-block-b {
+    display:none;
+  }
+  .catHeading, .catHeadingNoClick
+  {
+    font-size: 38px;
+  }
+}
+/* Large Phones */
+@media only screen 
+  and (max-width : 767px) 
+  and (min-width : 481px) {
+  .box {
+    width: 100%;
+    padding-bottom: 100%;
+   }
+  #contentcolumn>.ui-block-a {
+    width:60% !important;
+  }
+  #contentcolumn>.ui-block-b {
+    width:40% !important;
+  }
+  .catHeading, .catHeadingNoClick
+  {
+    font-size: 30px;
+  }
+}
+
+/* ----------- Tablets ----------- */
+/* Tablets Portrait*/
+@media only screen 
+  and (max-width : 1050px) 
+  and (min-width : 768px) 
+  and (orientation: portrait) {
+  .box {
+    width: 100%;
+    padding-bottom: 100%;
+   }
+  #contentcolumn>.ui-block-a {
+    width:60% !important;
+  }
+  #contentcolumn>.ui-block-b {
+    width:40% !important;
+  }
+  .catHeading, .catHeadingNoClick
+  {
+    font-size: 30px;
+  }
+}
+
+/* Tablets Landscape*/
+@media only screen 
+  and (max-width : 1050px) 
+  and (min-width : 768px) 
+  and (orientation: landscape) {
+  .box {
+    width: 50%;
+    padding-bottom: 50%;
+
+   }
+  #contentcolumn>.ui-block-a {
+    width:60% !important;
+  }
+  #contentcolumn>.ui-block-b {
+    width:40% !important;
+  }
+  .catHeading, .catHeadingNoClick
+  {
+    font-size: 30px;
+  }
+}
+
+/* ----------- Bigger ----------- */
+@media only screen 
+  and (min-width : 1051px)
+  and (max-width : 1240px) {
+  .box {
+    width: 50%;
+    padding-bottom: 50%;
+
+   }
+  #contentcolumn>.ui-block-a {
+    width:60% !important;
+  }
+  #contentcolumn>.ui-block-b {
+    width:40% !important;
+  }
+  .catHeading, .catHeadingNoClick
+  {
+    font-size: 40px;
+  }
+}
+
+/* ----------- Bigger Still ----------- */
+@media only screen 
+  and (min-width : 1241px) {
+  .box {
+    width: 33%;
+    padding-bottom: 33%;
+
+   }
+  #contentcolumn>.ui-block-a {
+    width:60% !important;
+  }
+  #contentcolumn>.ui-block-b {
+    width:40% !important;
+  }
+  .catHeading, .catHeadingNoClick
+  {
+    font-size: 40px;
+  }
+}
+
+
+/**************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/********************** SCROLLING MENU **********************/
+* { box-sizing: border-box; }
+
+.carousel {
+  background: #000;
+}
+
+.carousel-cell {
+  width: 150px;
+  height: 400px;
+  margin-right: 10px;
+  background: #8C8;
+  border-radius: 5px;
+  counter-increment: carousel-cell;
+}
+
+.carousel-cell2 {
+  width: 200px;
+  height: 40px;
+  margin-right: 10px;
+  background: #000;
+  border-radius: 8px;
+  top: 6px;
+}
+
+.is-selected
+{
+  background: #F2F2F2;
+  color:black;
+  text-shadow: none;
+}
+
+.cell-title
+{
+  text-align: center;
+  vertical-align: middle;
+  line-height: 40px
+}
+
+/* cell number */
+.carousel-cell:before {
+  display: block;
+  text-align: center;
+  content: counter(carousel-cell);
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
+}
+
+.flickity-page-dots
+{
+  display:none;
+}
+
+.flickity-prev-next-button
+{
+  display:none;
+}
+
+.ui-header
+{
+  border-bottom: 0;
+}
+.ui-title
+{
+  padding-bottom: 0em;
+}
+/**************************************************/
+
+
+
+
+
+
+
+/********************** IFRAME **********************/
+/*  video size fix */
+iframe {
+    height: 280px;
+    width: 500px;
+    max-width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+    iframe {
+        height: 675px;
+        width: 1200px;
+    }
+}
+
+/**************************************************/
+
+
+
+
+
+
+
+
+/********************** MENU PANEL **********************/
+#menuPanel 
+{
+  background-color: black;
+  overflow: auto;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;  
+  -webkit-overflow-scrolling: touch;
+}
+
+/**************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/********************** IMG SIZE FIX **********************/
+/* img size fix */
+.alignnone,.size-full {
+    position: relative;
+    max-width: 100%;
+    padding: 20px 0;
+}
+img:not(.boxer-image) {
+    max-width: 100%;
+}
+img {
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+    height: auto;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/**************************************************/
+
+
+
+
+
+
+
+/********************** FOOTER **********************/
+.footer {
+    text-align: center;
+}
+
+/**************************************************/
+
+
+
+
+
+
