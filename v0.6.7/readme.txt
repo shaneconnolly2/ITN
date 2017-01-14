@@ -83,3 +83,8 @@ Version 0.6.5
 - Subscribe via Mailchimp
 - Podcasts via Soundcloud
 - Social Media Icons
+
+Version 0.6.7
+- Update Categories every x number of uses
+- Refreshing via various clicks on headers
+- Scrolling menu now behaves (deselects the current element) when a category outside of it's reach is called.

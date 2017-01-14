@@ -79,6 +79,7 @@ GLOBAL_perCategory = 4;
 GLOBAL_paramData = {};
 GLOBAL_endOfData = false;
 GLOBAL_currentCategory = 0;
+GLOBAL_usesBeforeMenuRefresh = 10;
 var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 var errorCounter = 0; // for debugging only
 
@@ -125,20 +126,29 @@ function onDeviceReady()
 { 
     //$("#splash").html('<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>');
 
-    //Get the Home Page Stories
-    GLOBAL_paramData.percategory = GLOBAL_perCategory.toString();
-    GLOBAL_paramData.menu = trendingMenuName;
-
-    $.when(getJSON(homePageURL, GLOBAL_paramData)).done(function(data)
+    //Only do this on fresh start of the app
+    if(GLOBAL_currentCategory === 0)
     {
-        displayPost(data);
-        GLOBAL_endOfData = true;
-        loadLocalVariables();
-    });
+        GLOBAL_paramData.percategory = GLOBAL_perCategory.toString();
+        GLOBAL_paramData.menu = trendingMenuName;
 
-    if (screen.width > 480) { 
-        setupSoundCloud();
+        $.when(getJSON(homePageURL, GLOBAL_paramData)).done(function(data)
+        {
+            displayPost(data);
+            GLOBAL_endOfData = true;
+            loadLocalVariables();
+        });
+
+        if (screen.width > 480) { 
+            setupSoundCloud();
+        }
     }
+    else
+    {
+        refreshPage();
+    }
+
+    countUsage();
 
     // Setup event hooks
     $('#home').on('click', function() 
@@ -151,9 +161,31 @@ function onDeviceReady()
         refreshPage($('#title-header').data('catid'), $('#title-header').innerHTML);
 
     });
+}
 
-  
+/**
+ * Count how many times the app has been used
+ * If it is more than GLOBAL_usesBeforeMenuRefresh since we refreshed the category data, refresh it
+ */
+function countUsage()
+{
+    if(localStorage.getItem("usageCount") !== null) //If we already have some data in localStorage
+    {
+        usageCount = JSON.parse(localStorage.getItem("usageCount"));
+        usageCount++;
+    }
+    else
+    {
+        usageCount = 1;
+    }
 
+    if(usageCount > GLOBAL_usesBeforeMenuRefresh)
+    {
+        getCategoryList();
+        usageCount = 0;
+    }
+    
+    localStorage.setItem("usageCount", usageCount);
 }
 
 function setupSoundCloud()
@@ -168,14 +200,14 @@ function setupSoundCloud()
 
 function refreshPage(catID, catName)
 {
-        if(catID !== -1 ) // refresh a category page
-        {
-            getPostsByCategory(catID, catName);
-        }
-        else // refresh the home page
-        {
-             getHomePage(); 
-        }
+    if(catID !== -1 ) // refresh a category page
+    {
+        getPostsByCategory(catID, catName);
+    }
+    else // refresh the home page
+    {
+        getHomePage(); 
+    }
 
 }
 
@@ -190,6 +222,7 @@ function getHomePage()
     {
         $('#title-header').html("Irish Tech News"); // update title-header to active category clicked
         $('#title-header').data('catid',-1);        // set a flag to tell us we are on the home page
+        $('.carousel').flickity( 'selectCell',  0);
         displayPost(data);
         GLOBAL_endOfData = true;
     });
@@ -246,7 +279,8 @@ function getJSON(JSONurl, parameters)
 
 function loadLocalVariables()
 {
-    localStorage.clear();
+    //Testing
+    //localStorage.clear();
 
     if (typeof(Storage) !== "undefined") //Local Storage is Available
     {        
@@ -256,10 +290,11 @@ function loadLocalVariables()
         }
         else
         {
-            console.log("adding from local");
+            //console.log("adding from local");
             addCategoriesToMenu();
             addTrendingToMenu();
             addMyITNToMenu();
+            addTrendingToCarousel();
         }
     } 
     else 
@@ -311,7 +346,7 @@ function getPostsByCategory(categoryID, categoryName)
             }
         }); 
 
-        $('#title-header').data('catid',categoryID); // store data about current category in the title header
+        
 
         if(isTrending)
         {
@@ -322,6 +357,7 @@ function getPostsByCategory(categoryID, categoryName)
         else
         {
             $('#title-header').html(categoryName); // update title-header to active category clicked
+            $('#title-header').data('catid',categoryID); // store data about current category in the title header
 
             $('.carousel').flickity( 'unselectCell',  $('.carousel').data('flickity').selectedIndex);
         }
@@ -464,13 +500,6 @@ function displayPost(data)
 
     });
 }
-
-
-
-
-
-
-
 
 
 /* ********************** MENU FUNCTIONALITY ********************** */
@@ -635,11 +664,12 @@ function addTrendingToCarousel()
             }
             else
             {
-                //If we changed category
-                if(GLOBAL_currentCategory !== $(cellElement).data('catid'))
-                {
-                    getPostsByCategory($(cellElement).data('catid'),  $(cellElement).data('catname'), false);
-                }
+                // //If we changed category
+                // if(GLOBAL_currentCategory !== $(cellElement).data('catid'))
+                // {
+                //     getPostsByCategory($(cellElement).data('catid'),  $(cellElement).data('catname'), false);
+                // }
+                getPostsByCategory($(cellElement).data('catid'),  $(cellElement).data('catname'), false);
                 
                 
             }
