@@ -1,0 +1,149 @@
+#menuPanel {
+    background-color: black;
+    overflow: auto;
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;  
+    -webkit-overflow-scrolling: touch;
+}
+.mytab {
+        width: 33.33% !important;
+        /* 12.5% for 8 tabs wide */
+        clear: none !important;
+        /* Prevent line break caused by ui-block-a */ 
+    }
+
+
+.tile
+{
+    width:300px;
+    height:300px;
+  }
+
+
+@media only screen and (min-width: 768px) {
+    .mytab {
+        width: 16.66% !important;
+        /* 12.5% for 8 tabs wide */
+        clear: none !important;
+        /* Prevent line break caused by ui-block-a */ 
+    }
+}
+
+/*  video size fix */
+iframe {
+    height: 280px;
+    width: 500px;
+    max-width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+    iframe {
+        height: 675px;
+        width: 1200px;
+    }
+}
+
+
+/* img size fix */
+.alignnone,.size-full {
+    position: relative;
+    max-width: 100%;
+    padding: 20px 0;
+}
+img:not(.boxer-image) {
+    max-width: 100%;
+}
+img {
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+    height: auto;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+/* end of img size fix */
+
+.footer {
+    text-align: center;
+}
+
+
+/* Styling for the tils on home page */
+.wrap {
+   overflow: hidden;
+   margin: 10px;
+}
+.box {
+   float: left;
+   position: relative;
+   width: 20%;
+   padding-bottom: 20%;
+}
+.boxInner {
+   position: absolute;
+   left: 10px;
+   right: 10px;
+   top: 10px;
+   bottom: 10px;
+   overflow: hidden;
+}
+
+
+.boxInner img {
+   width: 100%;
+}
+
+.textOverlay p 
+{
+    font-family: "Open Sans";
+    font-style: normal;
+    font-size: 1.8em;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding:5px;
+    margin: 0;
+}
+
+.authorText
+{
+    font-size: 0.5em;
+}
+
+
+
+body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleBox {
+   margin-bottom: 0;
+}
+@media only screen and (max-width : 480px) {
+   /* Smartphone view: 1 tile */
+   .box {
+      width: 100%;
+      padding-bottom: 100%;
+   }
+}
+@media only screen and (max-width : 650px) and (min-width : 481px) {
+   /* Tablet view: 2 tiles */
+   .box {
+      width: 50%;
+      padding-bottom: 50%;
+   }
+}
+@media only screen and (max-width : 1050px) and (min-width : 651px) {
+   /* Small desktop / ipad view: 3 tiles */
+   .box {
+      width: 33.3%;
+      padding-bottom: 33.3%;
+   }
+}
+@media only screen and (max-width : 1290px) and (min-width : 1051px) {
+   /* Medium desktop: 4 tiles */
+   .box {
+      width: 25%;
+      padding-bottom: 25%;
+   }
+}

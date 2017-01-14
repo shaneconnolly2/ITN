@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!--
+**************************************************************************************************
+* Author: Team 9
+* Module: WE4.1 Major Project, Digital Skills Academy
+* Title: ITN app 
+* Date: 2016/11/26
+* Version: 0.6.5
+**************************************************************************************************
+ -->
+<html>
+
+<head>
+    <title>Irish Tech News</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Custom Color Theme (Swatch) -->
+    <link rel="stylesheet" href="css/gato2.min.css" />
+    <link rel="stylesheet" href="css/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="css/jquery.mobile.structure-1.4.5.min.css" /> 
+    <link rel="stylesheet" href="css/flickity.min.css" />   
+
+    <!-- All local CSS Styling -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/flickity.pkgd.js"></script>
+   
+</head>
+
+<body>
+    <div data-role="page" id="main" class="ui-responsive-panel" data-theme="a">
+
+        <div data-role="header" data-id="mainHeader">
+            <h1 id="title-header" data-catid = "-1">Irish Tech News</h1>
+            <!-- display menu icon - http://api.jquerymobile.com/icons -->
+            <a href="#menuPanel" data-icon="bars" id="bMenu" data-iconpos="notext"></a>
+            
+            <a href="#settingsPage" data-icon="bars" id="bMenu" data-iconpos="notext" data-transition="slide"></a>            
+                       
+            <!-- Menu Carousel with Flickity backbone -->
+            <div id="menucarousel" class="carousel" data-flickity='{ "freeScroll": true }'>
+                <div id="carouselHome" class="carousel-cell2" data-catid="home" data-catname="home"><div class="cell-title">Home</div></div>  
+            </div>
+
+        </div> <!-- end of header -->
+
+        <div data-role="content"> 
+
+            <span id="splash"></span> <!--temporary splash loader -->
+            <div class="wrap" id="myList">                
+            </div>
+        </div> 
+
+        <div data-role="footer">
+            <div class="footer"><br/>&copy; 2017 Irish Tech News</div>
+        </div>
+
+
+
+        <!-- BURGER MENU Side Panel -->
+        <div class="panel left" data-role="panel" id="menuPanel" data-theme="b">
+            <ul data-role="listview" id="menuList">
+                <li data-icon="delete">
+                    <a href="#main" data-rel="close">Close menu</a>
+                </li>
+                <li><a href="#main" data-rel="close" id="home">Home</a></li>
+                <li><a href="#main" data-catname="Podcast" class="cats" id="catList6559">Podcast</a></li>
+                
+                <!-- myITN Categories-->
+                <div data-role="collapsible-set" data-collapsed-icon="star" data-expanded-icon="minus">
+                    <div data-role="collapsible">
+                        <h3>My ITN</h3>
+                        <ul data-role="listview" id="myITNList" data-split-theme="b">
+                            <!-- List is populated via jQuery Ajax -->      
+                        </ul>
+                    </div>                
+                </div> <!-- End of myITN Categories -->        
+
+                <!-- Trending Categories-->
+                <div data-role="collapsible-set">
+                    <div data-role="collapsible">
+                        <h3>Trending</h3>
+                        <ul data-role="listview" id="trendingList">
+                            <!-- List is populated via jQuery Ajax -->      
+                        </ul>
+                    </div>                
+                </div> <!-- End of Trending Categories -->
+
+                <!-- CATEGORIES -->
+                <div data-role="collapsible-set">
+                    <div data-role="collapsible">
+                        <h3>Categories</h3>
+                        <ul data-role="listview" id="allCatsList" data-split-theme="b" data-filter="true" data-filter-reveal="false" data-filter-placeholder="Search Category">
+                        </ul>
+                            <!-- List is populated via jQuery Ajax -->             
+                    </div>                   
+                </div>                 
+            </ul>  
+        </div> <!-- End of BURGER MENU --> 
+    </div> <!-- end of Home page (main)-->
+
+
+    <div data-role="page" id="settingsPage" class="ui-responsive-panel" data-theme="a">
+        <div data-role="header" data-id="mainHeader" >
+            <h1 id="title-header">Settings</h1>
+            <a href ="#" data-rel="back" data-icon="back" data-iconpos="notext">Back</a>
+        </div> <!-- end of header -->
+
+        <div data-role="content"> 
+            <form method="post" action="demoform.asp">
+                <label for="navBarSlider">Show Navigation Bar</label>
+                <select name="navBarSlider" id="navBarSlider" data-role="slider">
+                    <option value="off">No</option>
+                    <option value="on">Yes</option>
+                </select>       
+                <hr>       
+                <label for="ppcSlider">Posts per category on Home Page</label>
+                <input name="ppcSlider" id="ppcSlider" value="3" min="1" max="10" type="range">               
+                <hr>
+            </form>
+        </div> 
+
+        <div data-role="footer">
+            <div class="footer"><br/>&copy; 2017 Irish Tech News</div>
+        </div>
+    </div> <!-- end of Settings page -->
+
+    
+</body>
+<script src="js/index.js"></script>
+</html>
+
+
+
+
+
+       <!-- <ul id="allCatsList" data-role="listview" data-inset="true" data-split-theme="a" data-split-icon="delete"> -->

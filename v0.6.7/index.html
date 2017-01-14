@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<!--
+**************************************************************************************************
+* Author: Team 9
+* Module: WE4.1 Major Project, Digital Skills Academy
+* Title: ITN app 
+* Date: 2016/11/26
+* Version: 0.6.6
+**************************************************************************************************
+ -->
+<html>
+
+<head>
+    <title>Irish Tech News</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Custom Color Theme (Swatch) -->
+    <link rel="stylesheet" href="css/gato2.min.css" />
+    <link rel="stylesheet" href="css/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="css/jquery.mobile.structure-1.4.5.min.css" /> 
+    <link rel="stylesheet" href="css/flickity.min.css" />   
+
+    <!-- All local CSS Styling -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/flickity.pkgd.js"></script>
+
+    <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
+
+</head>
+
+<body>
+    <div data-role="page" id="main" class="ui-responsive-panel" data-theme="a">
+
+        <div data-role="header" data-id="mainHeader">
+            <h1 id="title-header" data-catid = "-1">Irish Tech News</h1>
+            <!-- display menu icon - http://api.jquerymobile.com/icons -->
+            <a href="#menuPanel" data-icon="bars" id="bMenu" data-iconpos="notext"></a>
+            
+            <a href="#settingsPage" data-icon="bars" id="bMenu" data-iconpos="notext" data-transition="slide"></a>            
+                       
+            <!-- Menu Carousel with Flickity backbone -->
+            <div id="menucarousel" class="carousel" data-flickity='{ "freeScroll": true }'>
+                <div id="carouselHome" class="carousel-cell2" data-catid="home" data-catname="home"><div class="cell-title">Home</div></div>   
+            </div>
+
+        </div> <!-- end of header -->
+
+        <div data-role="content">
+            <div class="ui-grid-a" id="contentcolumn">
+                <div class="ui-block-a">
+                    <span id="splash"></span> <!--temporary splash loader -->
+                    <div class="wrap" id="myList">                
+                    </div>
+                </div>
+                <div class="ui-block-b">
+                    <div class="wrap"> 
+                        <div class = "catHeadingNoClick" data-catid="" data-catname="">Social Media</div>   
+                        <ul class="social-icons">
+                            <li>
+                                <a href="https://www.facebook.com/irishtechnews" title="Facebook" target="blank">
+                                    <img src="icons/SocialMedia/facebook.png" alt="Facebook">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/Irish_TechNews" title="Twitter" target="blank">
+                                    <img src="icons/SocialMedia/twitter.png" alt="Twitter">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://plus.google.com/+IrishtechnewsNet" title="Google+" target="blank">
+                                    <img src="icons/SocialMedia/google-plus.png" alt="Google+">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/company/irish-tech-news" title="LinkedIn" target="blank">
+                                    <img src="icons/SocialMedia/linkedin.png" alt="LinkedIn">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.pinterest.com/IrishTechNews/" title="Pinterest" target="blank">
+                                    <img src="icons/SocialMedia/pinterest.png" alt="Pinterest">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://soundcloud.com/irish-tech-news" title="SoundCloud" target="blank">
+                                    <img src="icons/SocialMedia/soundcloud.png" alt="SoundCloud">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:info@irishtechnews.ie" title="Email" target="blank">
+                                    <img src="icons/SocialMedia/email.png" alt="Email">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://feeds.feedburner.com/IrishTechNews" title="RSS Feed" target="blank">
+                                    <img src="icons/SocialMedia/rss-feed.png" alt="RSS Feed">
+                                </a>
+                            </li>
+                        </ul>
+                        <div class = "catHeading" data-catid="" data-catname="">Podcasts</div>
+                        <div class ="wrap" id="podcastList">
+                            <div id="podcastWrapper"></div>
+                        </div>
+                        <div class = "catHeadingNoClick" data-catid="" data-catname="">Subscribe</div>                        
+                        <div class="wrap">
+                            <form action="https://IrishTechNews.us10.list-manage.com/subscribe/post?u=4c59ed65422a8e70e7123255b&amp;id=7827fb1fac" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
+                                <div id="mc_embed_signup_scroll">
+                                    <input placeholder ="Email - Required" value="" name="EMAIL" class="required email" id="mce-EMAIL" type="email">
+                                    <input placeholder ="First Name"value="" name="FNAME" class="" id="mce-FNAME" type="text">
+                                    <input placeholder ="Last Name"value="" name="LNAME" class="" id="mce-LNAME" type="text">
+                                </div>
+                                <div class="response" id="mce-error-response" style="display:none"></div>
+                                <div class="response" id="mce-success-response" style="display:none"></div>                 
+                                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input name="b_4c59ed65422a8e70e7123255b_7827fb1fac" tabindex="-1" value="" type="text"></div>
+                                <div class="clear">
+                                    <input value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button" type="submit">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>            
+            </div>
+        </div> <!-- end of Content -->
+
+        <div data-role="footer">
+            <div class="footer"><br/>&copy; 2017 Irish Tech News</div>
+        </div>
+
+
+
+        <!-- BURGER MENU Side Panel -->
+        <div class="panel left" data-role="panel" id="menuPanel" data-theme="b">
+            <ul data-role="listview" id="menuList">
+                <li data-icon="delete">
+                    <a href="#main" data-rel="close">Close menu</a>
+                </li>
+                <li><a href="#main" data-rel="close" id="home">Home</a></li>
+                <li><a href="#main" data-catname="Podcast" class="cats" id="catList6559">Podcast</a></li>
+                
+                <!-- myITN Categories-->
+                <div data-role="collapsible-set" data-collapsed-icon="star" data-expanded-icon="minus">
+                    <div data-role="collapsible">
+                        <h3>My ITN</h3>
+                        <ul data-role="listview" id="myITNList" data-split-theme="b">
+                            <!-- List is populated via jQuery Ajax -->      
+                        </ul>
+                    </div>                
+                </div> <!-- End of myITN Categories -->        
+
+                <!-- Trending Categories-->
+                <div data-role="collapsible-set">
+                    <div data-role="collapsible">
+                        <h3>Trending</h3>
+                        <ul data-role="listview" id="trendingList">
+                            <!-- List is populated via jQuery Ajax -->      
+                        </ul>
+                    </div>                
+                </div> <!-- End of Trending Categories -->
+
+                <!-- CATEGORIES -->
+                <div data-role="collapsible-set">
+                    <div data-role="collapsible">
+                        <h3>Categories</h3>
+                        <ul data-role="listview" id="allCatsList" data-split-theme="b" data-filter="true" data-filter-reveal="false" data-filter-placeholder="Search Category">
+                        </ul>
+                            <!-- List is populated via jQuery Ajax -->             
+                    </div>                   
+                </div>                 
+            </ul>  
+        </div> <!-- End of BURGER MENU --> 
+    </div> <!-- end of Home page (main)-->
+
+
+    <div data-role="page" id="settingsPage" class="ui-responsive-panel" data-theme="a">
+        <div data-role="header" data-id="mainHeader" >
+            <h1 id="title-header">Settings</h1>
+            <a href ="#" data-rel="back" data-icon="back" data-iconpos="notext">Back</a>
+        </div> <!-- end of header -->
+
+        <div data-role="content"> 
+            <form method="post" action="demoform.asp">
+                <label for="navBarSlider">Show Navigation Bar</label>
+                <select name="navBarSlider" id="navBarSlider" data-role="slider">
+                    <option value="off">No</option>
+                    <option value="on">Yes</option>
+                </select>       
+                <hr>       
+                <label for="ppcSlider">Posts per category on Home Page</label>
+                <input name="ppcSlider" id="ppcSlider" value="3" min="1" max="10" type="range">               
+                <hr>
+            </form>
+        </div> 
+
+        <div data-role="footer">
+            <div class="footer"><br/>&copy; 2017 Irish Tech News</div>
+        </div>
+    </div> <!-- end of Settings page -->
+
+    
+</body>
+<script src="js/index.js"></script>
+</html>
+
+
+
+
+
+       <!-- <ul id="allCatsList" data-role="listview" data-inset="true" data-split-theme="a" data-split-icon="delete"> -->
