@@ -4,7 +4,7 @@
  * Module: WE4.1 Major Project, Digital Skills Academy
  * Title: ITN app 
  * Date: 2016/11/30
- * Versio 0.6.1
+ * Versio 0.6.8
  **************************************************************************************************
  *
  * Copyright 2016 Irish Tech News

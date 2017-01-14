@@ -88,3 +88,6 @@ Version 0.6.7
 - Update Categories every x number of uses
 - Refreshing via various clicks on headers
 - Scrolling menu now behaves (deselects the current element) when a category outside of it's reach is called.
+
+Version 0.6.8
+- MyITN page functionality
